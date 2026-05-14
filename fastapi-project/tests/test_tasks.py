@@ -6,7 +6,6 @@ from sqlalchemy.orm import sessionmaker
 from app.db.database import Base, get_db
 from app.main import app
 
-# Banco SQLite em memória só para testes — não afeta o PostgreSQL de produção
 SQLALCHEMY_DATABASE_URL = "sqlite:///./test.db"
 engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
 TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
@@ -20,7 +19,6 @@ def override_get_db():
         db.close()
 
 
-# Substitui a dependência do banco pelo banco de teste
 app.dependency_overrides[get_db] = override_get_db
 
 
