@@ -4,13 +4,10 @@ from sqlalchemy.orm import sessionmaker
 
 from app.core.config import settings
 
-# Cria o motor de conexão com o PostgreSQL
 engine = create_engine(settings.DATABASE_URL)
 
-# Cada instância de SessionLocal é uma sessão de banco de dados
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-# Classe base para os models
 Base = declarative_base()
 
 
