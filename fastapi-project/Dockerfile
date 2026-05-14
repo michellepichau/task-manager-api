@@ -2,11 +2,9 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Instala dependências primeiro (cache do Docker)
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copia o restante do código
 COPY . .
 
 EXPOSE 8000
